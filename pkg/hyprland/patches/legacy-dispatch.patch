@@ -1,0 +1,24 @@
+Accept hyprlang-style `dispatch <name> <args>` requests with a Lua config.
+
+Hyprland 0.56 evaluates every IPC dispatch as `hl.dispatch(<args>)` when the
+config is Lua, so clients that still send the old syntax fail. Waybar up to
+0.15.0 does this for workspace clicks (`dispatch workspace N`). The legacy
+dispatchers stay registered in Lua mode, so fall back to them when the Lua
+attempt fails and the first word names one. Drop this once waybar ships its
+Lua IPC support (currently only on master) and we build it.
+
+--- a/src/debug/HyprCtl.cpp
++++ b/src/debug/HyprCtl.cpp
+@@ -1136,8 +1136,10 @@
+         if (ret.starts_with("ok") || in.contains("(") /* this likely means the user is passing a valid lua dispatch string */)
+             return ret;
+ 
+-        // the user likely is trying to dispatch old hyprlang stuff via lua, let them know
+-        return ret + "\n\n → Note: dispatch in lua is a shorthand for hl.dispatch(...), your syntax might need to be updated.";
++        // Clients predating Lua configs (waybar releases up to 0.15) still send hyprlang dispatch syntax;
++        // run those through the legacy dispatchers instead of rejecting them.
++        if (!g_pKeybindManager->m_dispatchers.contains(in.substr(0, in.find_first_of(' '))))
++            return ret + "\n\n → Note: dispatch in lua is a shorthand for hl.dispatch(...), your syntax might need to be updated.";
+     }
+ 
+     const auto DISPATCHSTR = in.substr(0, in.find_first_of(' '));

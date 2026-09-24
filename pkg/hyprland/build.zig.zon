@@ -32,5 +32,6 @@
     .paths = .{
         "build.zig",
         "build.zig.zon",
+        "patches",
     },
 }

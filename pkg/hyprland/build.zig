@@ -124,14 +124,15 @@ pub fn build(b: *std.Build) !void {
         .install_subdir = "gen",
     }).step);
 
+    const src = util.patched(b, upstream.path(""), &.{b.path("patches/legacy-dispatch.patch")});
     // Plugin hooks resolve symbols with `nm -D`, which reads .dynsym (kept by rdynamic), so stripping is safe.
     const mod = b.createModule(.{ .target = target, .optimize = optimize, .link_libcpp = true, .strip = optimize != .debug });
     // Generated files are included by relative paths ("../version.h", "shaders/Shaders.hpp",
     // "../../protocols/cursor-shape-v1.hpp"); these two include dirs make all of them resolve in `gen`.
     mod.addIncludePath(gen.getDirectory().path(b, "protocols"));
     mod.addIncludePath(gen.getDirectory().path(b, "src/render"));
-    mod.addIncludePath(upstream.path(""));
-    mod.addIncludePath(upstream.path("src"));
+    mod.addIncludePath(src);
+    mod.addIncludePath(src.path(b, "src"));
     mod.addIncludePath(b.dependency("glaze", .{}).namedLazyPath("include"));
     mod.addCMacro("HYPRLAND_VERSION", "\"" ++ version ++ "\"");
     mod.addCMacro("NO_XWAYLAND", "");
@@ -185,7 +186,7 @@ pub fn build(b: *std.Build) !void {
         "-std=c++26",
     };
     // XWM.cpp includes xcb headers before its NO_XWAYLAND guard; everything after is guarded.
-    mod.addCSourceFiles(.{ .root = upstream.path(""), .files = try util.glob(b, upstream.path(""), .{ .include = &.{"src/**/*.cpp"}, .exclude = &.{"src/xwayland/XWM.cpp"} }), .flags = flags });
+    mod.addCSourceFiles(.{ .root = src, .files = try util.glob(b, upstream.path(""), .{ .include = &.{"src/**/*.cpp"}, .exclude = &.{"src/xwayland/XWM.cpp"} }), .flags = flags });
     mod.addCSourceFiles(.{ .root = gen.getDirectory(), .files = proto_srcs.items, .flags = flags });
 
     const exe = b.addExecutable(.{ .name = "Hyprland", .root_module = mod });
