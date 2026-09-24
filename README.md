@@ -74,6 +74,7 @@ sudo apt install \
   brightnessctl \
   easyeffects \
   grim \
+  gsimplecal \
   network-manager-gnome \
   pavucontrol \
   playerctl \
