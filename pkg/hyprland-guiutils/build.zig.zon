@@ -1,0 +1,22 @@
+.{
+    .name = .hyprland_guiutils,
+    .version = "0.0.0",
+    .fingerprint = 0xda0989b59c198942,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprlang = .{ .path = "../hyprlang" },
+        .hyprtoolkit = .{ .path = "../hyprtoolkit" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .libxkbcommon = .{ .path = "../libxkbcommon" },
+        // renovate: datasource=github-tags depName=hyprwm/hyprland-guiutils
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hyprland-guiutils/archive/refs/tags/v0.2.2.tar.gz",
+            .hash = "N-V-__8AAFtPAQALkNfbeg6XkjR6xJWaAdmzwfrJsNs0li5t",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

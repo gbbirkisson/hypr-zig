@@ -1,0 +1,12 @@
+--- a/src/portals/Screencopy.cpp
++++ b/src/portals/Screencopy.cpp
+@@ -277,7 +277,8 @@
+     if (PSESSION->selection.allowToken) {
+         // give them a token :)
+         options["restore_data"] = sdbus::Variant{getFullRestoreStruct(PSESSION->selection, PSESSION->cursorMode)};
+-        options["persist_mode"] = sdbus::Variant{uint32_t{2}};
++        // honor the requested mode, capped at 1 so a grant never outlives the app.
++        options["persist_mode"] = sdbus::Variant{std::min(PSESSION->persistMode, uint32_t{1})};
+ 
+         Debug::log(LOG, "[screencopy] Sent restore token to {}", PSESSION->sessionHandle.c_str());
+     }

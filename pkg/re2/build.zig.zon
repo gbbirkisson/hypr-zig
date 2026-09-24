@@ -1,0 +1,19 @@
+.{
+    .name = .re2,
+    .version = "0.0.0",
+    .fingerprint = 0x7869ab4e570b81f3,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .abseil = .{ .path = "../abseil" },
+        // renovate: datasource=github-releases depName=google/re2 versioning=regex:^(?<major>\d{4})-(?<minor>\d{2})-(?<patch>\d{2})$
+        .upstream = .{
+            .url = "https://github.com/google/re2/archive/refs/tags/2025-11-05.tar.gz",
+            .hash = "N-V-__8AADh_GQCXgElXgN0nNsUTPyvRCYHP5ZgNg3zFAl2e",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

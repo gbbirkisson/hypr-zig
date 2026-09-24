@@ -1,0 +1,29 @@
+.{
+    .name = .xdg_desktop_portal_hyprland,
+    .version = "0.0.0",
+    .fingerprint = 0xc926dfe474df95d0,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprland_protocols = .{ .path = "../hyprland-protocols" },
+        .hyprlang = .{ .path = "../hyprlang" },
+        .hyprtoolkit = .{ .path = "../hyprtoolkit" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .hyprwayland_scanner = .{ .path = "../hyprwayland-scanner" },
+        .sdbus_cpp = .{ .path = "../sdbus-cpp" },
+        .wayland = .{ .path = "../wayland" },
+        .wayland_protocols = .{ .path = "../wayland-protocols" },
+        // master, not a release tag: v1.4.1's share picker needs Qt6 (C++, incompatible with our
+        // libc++); master's picker uses hyprtoolkit. Switch to release tags once a release ships it.
+        // renovate: datasource=git-refs depName=xdg-desktop-portal-hyprland packageName=https://github.com/hyprwm/xdg-desktop-portal-hyprland currentValue=master
+        .upstream = .{
+            .url = "https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/e87ae7823e7bf0601385220c69b5a3b245123fc5.tar.gz",
+            .hash = "N-V-__8AAM04BABU8IPzKXsQmh7jX4bSqILC0KXQ8c9H0HM-",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "patches",
+    },
+}

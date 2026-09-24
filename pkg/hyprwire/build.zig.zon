@@ -1,0 +1,20 @@
+.{
+    .name = .hyprwire,
+    .version = "0.0.0",
+    .fingerprint = 0x6d3a9d806c3458e,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .pugixml = .{ .path = "../pugixml" },
+        // renovate: datasource=github-tags depName=hyprwm/hyprwire
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hyprwire/archive/refs/tags/v0.3.1.tar.gz",
+            .hash = "N-V-__8AAME3BAC6s_HwdPk28aT6JKdaX6s80CQN0ysEnyph",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

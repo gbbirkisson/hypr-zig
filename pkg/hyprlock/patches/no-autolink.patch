@@ -1,0 +1,10 @@
+--- a/src/renderer/widgets/IWidget.cpp
++++ b/src/renderer/widgets/IWidget.cpp
+@@ -12,7 +12,6 @@
+ using namespace Hyprutils::String;
+ 
+ #if defined(_LIBCPP_VERSION)
+-#pragma comment(lib, "date-tz")
+ #include <date/tz.h>
+ namespace std {
+     namespace chrono {

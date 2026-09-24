@@ -1,0 +1,28 @@
+.{
+    .name = .hyprtoolkit,
+    .version = "0.0.0",
+    .fingerprint = 0xb9d89d611510453c,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .abseil = .{ .path = "../abseil" },
+        .aquamarine = .{ .path = "../aquamarine" },
+        .hyprgraphics = .{ .path = "../hyprgraphics" },
+        .hyprlang = .{ .path = "../hyprlang" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .hyprwayland_scanner = .{ .path = "../hyprwayland-scanner" },
+        .libxkbcommon = .{ .path = "../libxkbcommon" },
+        .wayland = .{ .path = "../wayland" },
+        .wayland_protocols = .{ .path = "../wayland-protocols" },
+        // renovate: datasource=github-tags depName=hyprwm/hyprtoolkit
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hyprtoolkit/archive/refs/tags/v0.6.0.tar.gz",
+            .hash = "N-V-__8AAHUyFADuGoy6NDyAwVB499laM6uW1oA3nOgzQP_5",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "patches",
+    },
+}

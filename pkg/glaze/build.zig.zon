@@ -1,0 +1,17 @@
+.{
+    .name = .glaze,
+    .version = "0.0.0",
+    .fingerprint = 0x3dddb1472b4b74e6,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        // renovate: datasource=github-releases depName=stephenberry/glaze
+        .upstream = .{
+            .url = "https://github.com/stephenberry/glaze/archive/refs/tags/v7.9.1.tar.gz",
+            .hash = "N-V-__8AAKGmnQCvegHqVJqf7jVMJCo5S2ZrcCGVqVUVkJuh",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

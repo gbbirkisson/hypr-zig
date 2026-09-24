@@ -1,0 +1,25 @@
+.{
+    .name = .hypridle,
+    .version = "0.0.0",
+    .fingerprint = 0x6a8c25f89c8bb198,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprland_protocols = .{ .path = "../hyprland-protocols" },
+        .hyprlang = .{ .path = "../hyprlang" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .hyprwayland_scanner = .{ .path = "../hyprwayland-scanner" },
+        .sdbus_cpp = .{ .path = "../sdbus-cpp" },
+        .wayland = .{ .path = "../wayland" },
+        .wayland_protocols = .{ .path = "../wayland-protocols" },
+        // renovate: datasource=github-tags depName=hyprwm/hypridle
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hypridle/archive/refs/tags/v0.1.8.tar.gz",
+            .hash = "N-V-__8AAIMUAQDRcX7ugRZMpVlVh3qG7dig2yHXYSbS_yIA",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

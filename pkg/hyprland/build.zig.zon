@@ -1,0 +1,36 @@
+.{
+    .name = .hyprland,
+    .version = "0.0.0",
+    .fingerprint = 0x1ea845355be20f15,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .hyprlang = .{ .path = "../hyprlang" },
+        .hyprcursor = .{ .path = "../hyprcursor" },
+        .hyprgraphics = .{ .path = "../hyprgraphics" },
+        .aquamarine = .{ .path = "../aquamarine" },
+        .wayland = .{ .path = "../wayland" },
+        .wayland_protocols = .{ .path = "../wayland-protocols" },
+        .hyprland_protocols = .{ .path = "../hyprland-protocols" },
+        .hyprwayland_scanner = .{ .path = "../hyprwayland-scanner" },
+        .hyprwire = .{ .path = "../hyprwire" },
+        .libxkbcommon = .{ .path = "../libxkbcommon" },
+        .libinput = .{ .path = "../libinput" },
+        .lua = .{ .path = "../lua" },
+        .udis86 = .{ .path = "../udis86" },
+        .re2 = .{ .path = "../re2" },
+        .muparser = .{ .path = "../muparser" },
+        .glslang = .{ .path = "../glslang" },
+        .glaze = .{ .path = "../glaze" },
+        // renovate: datasource=github-tags depName=hyprwm/Hyprland
+        .upstream = .{
+            .url = "https://github.com/hyprwm/Hyprland/archive/refs/tags/v0.56.2.tar.gz",
+            .hash = "N-V-__8AAObhbANxg8zYAhQXTUZpP9FmOdejBrr7yQXzYk4H",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

@@ -1,0 +1,18 @@
+.{
+    .name = .udis86,
+    .version = "0.0.0",
+    .fingerprint = 0x4e23abbe9d01e4de,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        // Hyprland's subprojects/udis86 fork; no release tags.
+        // renovate: datasource=git-refs depName=udis86 packageName=https://github.com/canihavesomecoffee/udis86 currentValue=master
+        .upstream = .{
+            .url = "https://github.com/canihavesomecoffee/udis86/archive/5336633af70f3917760a6d441ff02d93477b0c86.tar.gz",
+            .hash = "N-V-__8AAHexDgDFCKh0INdzhd34Z4kYgc4cvswuTkGY3Atf",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

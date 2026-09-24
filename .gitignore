@@ -1,0 +1,4 @@
+.zig-cache/
+docs/
+zig-out
+zig-pkg/

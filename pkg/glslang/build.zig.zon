@@ -1,0 +1,18 @@
+.{
+    .name = .glslang,
+    .version = "0.0.0",
+    .fingerprint = 0x274a355d495f527,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // renovate: datasource=github-releases depName=KhronosGroup/glslang
+        .upstream = .{
+            .url = "https://github.com/KhronosGroup/glslang/archive/refs/tags/16.6.0.tar.gz",
+            .hash = "N-V-__8AAMmpvgL92dJGQdndHv_3KUj32P-C6QWT83-1-lEM",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

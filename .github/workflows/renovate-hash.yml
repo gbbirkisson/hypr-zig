@@ -1,0 +1,37 @@
+name: renovate-hash
+
+on:
+  push:
+    branches: ["renovate/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  hash:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+
+      - uses: jdx/mise-action@v4
+        with:
+          install_args: zig
+
+      - name: Refresh package hashes
+        run: |
+          for zon in $(git diff --name-only HEAD~1 -- 'pkg/*/build.zig.zon'); do
+            awk '/^ *\.[a-z_]+ = \.\{$/ { name = $1; sub(/^\./, "", name) } /\.url = "/ { split($0, q, "\""); print name, q[2] }' "$zon" |
+              while read -r name url; do
+                (cd "$(dirname "$zon")" && zig fetch --save="$name" "$url")
+              done
+          done
+
+      - name: Push
+        run: |
+          git diff --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore(deps): refresh zig package hashes"
+          git push

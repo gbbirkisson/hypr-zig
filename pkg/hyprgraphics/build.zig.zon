@@ -1,0 +1,19 @@
+.{
+    .name = .hyprgraphics,
+    .version = "0.0.0",
+    .fingerprint = 0x5d13bd152e893e95,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        // renovate: datasource=github-tags depName=hyprwm/hyprgraphics
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hyprgraphics/archive/refs/tags/v0.5.1.tar.gz",
+            .hash = "N-V-__8AAI0cCwBIXQKgCPhUFKMlbdMkxQAtqgMcUFLspZy5",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

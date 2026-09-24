@@ -1,0 +1,58 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  dependencyDashboard: true,
+  extends: [
+    ':semanticCommits',
+    'config:recommended',
+  ],
+  gitIgnoredAuthors: [
+    '41898282+github-actions[bot]@users.noreply.github.com',
+  ],
+  customManagers: [
+    {
+      customType: 'regex',
+      description: 'Upstream tarballs in build.zig.zon',
+      managerFilePatterns: [
+        '/(^|/)build\\.zig\\.zon$/',
+      ],
+      matchStrings: [
+        '// renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: registryUrl=(?<registryUrl>\\S+))?(?: extractVersion=(?<extractVersion>\\S+))?(?: versioning=(?<versioning>\\S+))?\\s+\\.upstream = \\.\\{\\s+\\.url = "(?:https://github\\.com/[^"]*/tags/|https://gitlab\\.freedesktop\\.org/[^"]*/-/archive/|https://www\\.lua\\.org/ftp/lua-)(?<currentValue>[^/"]+?)(?:/archive)?\\.tar\\.gz"',
+      ],
+    },
+    {
+      customType: 'regex',
+      description: 'Commit pins in build.zig.zon',
+      managerFilePatterns: [
+        '/(^|/)build\\.zig\\.zon$/',
+      ],
+      matchStrings: [
+        '// renovate: datasource=(?<datasource>git-refs) depName=(?<depName>\\S+) packageName=(?<packageName>\\S+) currentValue=(?<currentValue>\\S+)\\s+\\.\\w+ = \\.\\{\\s+\\.url = "[^"]*?(?<currentDigest>[0-9a-f]{40})[^"]*"',
+      ],
+    },
+  ],
+  packageRules: [
+    {
+      description: 'Freedesktop marks pre-releases with patch numbers 90 and up',
+      matchPackageNames: [
+        'libinput/libinput',
+        'wayland/wayland',
+      ],
+      allowedVersions: '/^\\d+\\.\\d+\\.[0-8]?[0-9]$/',
+    },
+    {
+      description: 'Hyprland requires glaze 7.x',
+      matchPackageNames: [
+        'stephenberry/glaze',
+      ],
+      allowedVersions: '<8',
+    },
+    {
+      groupName: 'hyprland dependencies',
+      groupSlug: 'hyprland-dep',
+      matchPackageNames: [
+        '!hyprwm/Hyprland',
+        'hyprwm/**',
+      ],
+    },
+  ],
+}

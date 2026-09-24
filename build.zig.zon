@@ -1,0 +1,21 @@
+.{
+    .name = .hypr_zig,
+    .version = "0.0.0",
+    .fingerprint = 0x3a0d99966fc5effe, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .batsignal = .{ .path = "pkg/batsignal" },
+        .hypridle = .{ .path = "pkg/hypridle" },
+        .hyprland = .{ .path = "pkg/hyprland" },
+        .hyprland_guiutils = .{ .path = "pkg/hyprland-guiutils" },
+        .hyprlock = .{ .path = "pkg/hyprlock" },
+        .hyprpaper = .{ .path = "pkg/hyprpaper" },
+        .wofi = .{ .path = "pkg/wofi" },
+        .xdg_desktop_portal_hyprland = .{ .path = "pkg/xdg-desktop-portal-hyprland" },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "pkg",
+    },
+}

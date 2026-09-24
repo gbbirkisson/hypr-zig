@@ -1,0 +1,17 @@
+.{
+    .name = .date,
+    .version = "0.0.0",
+    .fingerprint = 0xaa9e377a55b95dd1,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        // renovate: datasource=github-tags depName=HowardHinnant/date
+        .upstream = .{
+            .url = "https://github.com/HowardHinnant/date/archive/refs/tags/v3.0.5.tar.gz",
+            .hash = "N-V-__8AAEKpHgDRQSpq7MdmGbWnoTfwivIkhXep1iw4gcK2",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

@@ -1,0 +1,18 @@
+.{
+    .name = .libinput,
+    .version = "0.0.0",
+    .fingerprint = 0xa77e0830b1c77748,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // renovate: datasource=gitlab-tags depName=libinput/libinput registryUrl=https://gitlab.freedesktop.org
+        .upstream = .{
+            .url = "https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.32.0/archive.tar.gz",
+            .hash = "N-V-__8AAHQBdABHuBbMW5NwMLsYspbT8P80jYFyU5ljpWKs",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

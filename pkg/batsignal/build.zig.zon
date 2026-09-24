@@ -1,0 +1,18 @@
+.{
+    .name = .batsignal,
+    .version = "0.0.0",
+    .fingerprint = 0x5534ddc76481f748,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // renovate: datasource=github-tags depName=electrickite/batsignal
+        .upstream = .{
+            .url = "https://github.com/electrickite/batsignal/archive/refs/tags/1.8.0.tar.gz",
+            .hash = "N-V-__8AAL2PAADTVr51qLME_dhEtJYtBMUjkW9qtYld4FgD",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

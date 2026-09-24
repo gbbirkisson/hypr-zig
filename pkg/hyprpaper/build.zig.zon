@@ -1,0 +1,22 @@
+.{
+    .name = .hyprpaper,
+    .version = "0.0.0",
+    .fingerprint = 0x90175643940b797e,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprlang = .{ .path = "../hyprlang" },
+        .hyprtoolkit = .{ .path = "../hyprtoolkit" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .hyprwire = .{ .path = "../hyprwire" },
+        // renovate: datasource=github-tags depName=hyprwm/hyprpaper
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hyprpaper/archive/refs/tags/v0.8.4.tar.gz",
+            .hash = "N-V-__8AACNJAQC-_5IeEOWhkAx92ncfT5Djp6TJJBWtBtN4",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

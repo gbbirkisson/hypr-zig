@@ -1,0 +1,18 @@
+.{
+    .name = .pugixml,
+    .version = "0.0.0",
+    .fingerprint = 0x89628182895f9bca,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // renovate: datasource=github-releases depName=zeux/pugixml
+        .upstream = .{
+            .url = "https://github.com/zeux/pugixml/archive/refs/tags/v1.16.tar.gz",
+            .hash = "N-V-__8AAKOnKgCQ7Y0anxq1QC7BFhDSS2jHMk0yhGTeV2gh",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

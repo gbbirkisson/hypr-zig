@@ -1,0 +1,19 @@
+.{
+    .name = .hyprlang,
+    .version = "0.0.0",
+    .fingerprint = 0x87a1148fd58ff680,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        // renovate: datasource=github-tags depName=hyprwm/hyprlang
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hyprlang/archive/refs/tags/v0.6.8.tar.gz",
+            .hash = "N-V-__8AABP1AwDJ5f5G_gJra5syZAenGMZu2frIvlLj72U4",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

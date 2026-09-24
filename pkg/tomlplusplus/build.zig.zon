@@ -1,0 +1,17 @@
+.{
+    .name = .tomlplusplus,
+    .version = "0.0.0",
+    .fingerprint = 0xb5966deb447580f9,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        // renovate: datasource=github-releases depName=marzer/tomlplusplus
+        .upstream = .{
+            .url = "https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.4.0.tar.gz",
+            .hash = "N-V-__8AADK0RQD1COdtDdmDmnolfWdg42Bp8usyxNExSWf6",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

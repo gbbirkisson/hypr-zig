@@ -1,0 +1,18 @@
+.{
+    .name = .abseil,
+    .version = "0.0.0",
+    .fingerprint = 0x5635a255aef3b8d5,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // renovate: datasource=github-releases depName=abseil/abseil-cpp versioning=loose
+        .upstream = .{
+            .url = "https://github.com/abseil/abseil-cpp/archive/refs/tags/20260817.0.tar.gz",
+            .hash = "N-V-__8AAAb6rwAvjbslelMWGZ5NawDm9UCy88i7ui4wvLbd",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

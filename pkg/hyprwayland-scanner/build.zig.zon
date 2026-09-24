@@ -1,0 +1,19 @@
+.{
+    .name = .hyprwayland_scanner,
+    .version = "0.0.0",
+    .fingerprint = 0x32f43ad8ec7ed52d,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .pugixml = .{ .path = "../pugixml" },
+        // renovate: datasource=github-tags depName=hyprwm/hyprwayland-scanner
+        .upstream = .{
+            .url = "https://github.com/hyprwm/hyprwayland-scanner/archive/refs/tags/v0.4.6.tar.gz",
+            .hash = "N-V-__8AAN-0AACllB3yoIvGO4oDCaWRmolHrUPCTur352mr",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

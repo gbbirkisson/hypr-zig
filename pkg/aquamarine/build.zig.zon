@@ -1,0 +1,28 @@
+.{
+    .name = .aquamarine,
+    .version = "0.0.0",
+    .fingerprint = 0xa3a8013482692b8c,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .hyprutils = .{ .path = "../hyprutils" },
+        .libinput = .{ .path = "../libinput" },
+        .wayland = .{ .path = "../wayland" },
+        .wayland_protocols = .{ .path = "../wayland-protocols" },
+        .hyprwayland_scanner = .{ .path = "../hyprwayland-scanner" },
+        // renovate: datasource=github-tags depName=hyprwm/aquamarine
+        .upstream = .{
+            .url = "https://github.com/hyprwm/aquamarine/archive/refs/tags/v0.15.1.tar.gz",
+            .hash = "N-V-__8AAJ0ACQDK-s4tOC9CPFgkfIcpSnJSgGyL4xDqcLHY",
+        },
+        // renovate: datasource=git-refs depName=libdisplay-info packageName=https://github.com/allyourcodebase/libdisplay-info currentValue=main
+        .libdisplay_info = .{
+            .url = "git+https://github.com/allyourcodebase/libdisplay-info.git#3fda1fb93284c7cf284a55f5be4cd0c8d9698ccc",
+            .hash = "libdisplay_info-0.3.0-Kg3HjrAXAADu9qCXptzTuaqzL43r5ryDrYZXmyolCuUt",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

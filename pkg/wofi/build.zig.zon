@@ -1,0 +1,19 @@
+.{
+    .name = .wofi,
+    .version = "0.0.0",
+    .fingerprint = 0x93eedef902d49f19,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .wayland = .{ .path = "../wayland" },
+        // renovate: datasource=git-refs depName=wofi packageName=https://github.com/SimplyCEO/wofi currentValue=master
+        .upstream = .{
+            .url = "https://github.com/SimplyCEO/wofi/archive/be591d17f94b03a8daddd40d7561b66c9a4f906e.tar.gz",
+            .hash = "N-V-__8AALQNBQBhmm3SRkYcw696qG--_aGZvUeKSY8X74yQ",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}
