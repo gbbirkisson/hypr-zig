@@ -15,6 +15,7 @@ Build Hyprland ecosystem with the Zig build system
 * [Requirements](#requirements)
 * [Build](#build)
 * [Install](#install)
+* [Dark mode](#dark-mode)
 
 <!-- vim-markdown-toc -->
 
@@ -198,3 +199,13 @@ sudo install -Dm644 -t /usr/local/share/zsh/site-functions zig-out/share/zsh/sit
 
 Hyprland finds its data under `/usr/share` or `/usr/local/share`, so install to
 one of those prefixes.
+
+## Dark mode
+
+```
+# GTK4/libadwaita, and via the portal Firefox, Chromium and Electron
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
+# GTK3
+gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
+```
