@@ -1,0 +1,19 @@
+.{
+    .name = .jsoncpp,
+    .version = "0.0.0",
+    .fingerprint = 0xca2caea5ea26473e,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // Releases, not tags: the repository carries old svn-* tags.
+        // renovate: datasource=github-releases depName=open-source-parsers/jsoncpp
+        .upstream = .{
+            .url = "https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.8.tar.gz",
+            .hash = "N-V-__8AAGpRDQDed4tVPb_4iau0O3Ru5dCM3sIqrKKA3QX4",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

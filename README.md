@@ -20,50 +20,112 @@ Build Hyprland ecosystem with the Zig build system
 
 ## Requirements
 
-Build tools (Zig, bison, binutils, Python) are pinned in `.tool-versions`.
+Build tools (Zig, bison, binutils, patch, Python, xmllint) are pinned in `.tool-versions`.
 
 ```
 # Install build tools
 mise install
 
 # Install dependencies
+
+# Build tools and data: pkg-config, aquamarine (hwdata), libinput (quirks), libxkbcommon (keymaps)
 sudo apt install \
   hwdata \
-  libcairo2-dev \
+  libinput-bin \
+  pkg-config \
+  xkb-data
+
+# Graphics: aquamarine, hyprgraphics, hyprland, hyprlock, hyprtoolkit
+sudo apt install \
   libdrm-dev \
   libegl-dev \
-  libeis-dev \
-  libevdev-dev \
-  libexpat1-dev \
-  libffi-dev \
   libgbm-dev \
   libgles-dev \
-  libglib2.0-dev \
-  libgtk-3-dev \
-  libiniparser-dev \
-  libinput-bin \
+  libpixman-1-dev
+
+# Drawing and text: cairomm, hyprcursor, hyprgraphics, hyprland, hyprlock, hyprtoolkit, pangomm
+sudo apt install \
+  libcairo2-dev \
+  libpango1.0-dev
+
+# Images: hyprcursor, hyprgraphics, hyprpaper
+sudo apt install \
   libjpeg-dev \
-  liblcms2-dev \
   libmagic-dev \
-  libmtdev-dev \
-  libnotify-dev \
-  libpam0g-dev \
-  libpango1.0-dev \
-  libpipewire-0.3-dev \
-  libpixman-1-dev \
   libpng-dev \
-  libreadline-dev \
   librsvg2-dev \
-  libseat-dev \
-  libspa-0.2-dev \
-  libsystemd-dev \
-  libudev-dev \
   libwebp-dev \
-  libxcursor-dev \
-  libzip-dev \
-  pkg-config \
-  uuid-dev \
-  xkb-data
+  libzip-dev
+
+# Input: aquamarine, libinput, waybar
+sudo apt install \
+  libevdev-dev \
+  libmtdev-dev \
+  libseat-dev \
+  libudev-dev
+
+# Wayland: wayland, hyprwire
+sudo apt install \
+  libexpat1-dev \
+  libffi-dev
+
+# GLib (and gdbus-codegen, glib-compile-resources): glibmm, hyprland, waybar, wofi
+sudo apt install \
+  libglib2.0-dev
+
+# GTK (and gtk+-unix-print-3.0): gtk-layer-shell, gtkmm, waybar, wofi
+sudo apt install \
+  libgtk-3-dev
+
+# sdbus-cpp: hypridle, hyprlock, xdg-desktop-portal-hyprland
+sudo apt install \
+  libsystemd-dev
+
+# uuid: hyprland, xdg-desktop-portal-hyprland
+sudo apt install \
+  uuid-dev
+
+# atkmm
+sudo apt install \
+  libatk1.0-dev
+
+# batsignal
+sudo apt install \
+  libnotify-dev
+
+# gtkmm
+sudo apt install \
+  libepoxy-dev \
+  libgdk-pixbuf-2.0-dev
+
+# hyprland
+sudo apt install \
+  libeis-dev \
+  liblcms2-dev \
+  libreadline-dev \
+  libxcursor-dev
+
+# hyprlock
+sudo apt install \
+  libpam0g-dev
+
+# hyprtoolkit
+sudo apt install \
+  libiniparser-dev
+
+# libxkbcommon (xkbregistry)
+sudo apt install \
+  libxml2-dev
+
+# waybar
+sudo apt install \
+  libdbusmenu-gtk3-dev \
+  libpulse-dev
+
+# xdg-desktop-portal-hyprland
+sudo apt install \
+  libpipewire-0.3-dev \
+  libspa-0.2-dev
 ```
 
 Nice to have apps when running Hyprland.
@@ -80,7 +142,6 @@ sudo apt install \
   playerctl \
   slurp \
   sway-notification-center \
-  waybar \
   wl-clipboard \
   xdg-desktop-portal \
   xdg-desktop-portal-gtk
@@ -125,6 +186,9 @@ sudo install -Dm644 -t /usr/local/share/hypr/stubs zig-out/share/hypr/stubs/*
 
 # Man pages
 for d in zig-out/share/man/man*; do sudo install -Dm644 -t "/usr/local/share/man/${d##*/}" "$d"/*; done
+
+# Waybar's default config
+sudo install -Dm644 -t /etc/xdg/waybar zig-out/etc/xdg/waybar/*
 
 # Shell completions (hyprctl)
 sudo install -Dm644 -t /usr/local/share/bash-completion/completions zig-out/share/bash-completion/completions/*

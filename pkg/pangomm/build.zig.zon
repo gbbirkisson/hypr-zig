@@ -1,0 +1,20 @@
+.{
+    .name = .pangomm,
+    .version = "0.0.0",
+    .fingerprint = 0x9284512ea95ecb69,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .cairomm = .{ .path = "../cairomm" },
+        .glibmm = .{ .path = "../glibmm" },
+        // renovate: datasource=gitlab-tags depName=GNOME/pangomm registryUrl=https://gitlab.gnome.org
+        .upstream = .{
+            .url = "https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.5.tar.xz",
+            .hash = "N-V-__8AAKigVQD_Jfq0T06JUXbmx1MBefdoVqIA-62_hWpL",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

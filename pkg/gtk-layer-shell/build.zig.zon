@@ -1,0 +1,20 @@
+.{
+    .name = .gtk_layer_shell,
+    .version = "0.0.0",
+    .fingerprint = 0xff855be086a987e2,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .wayland = .{ .path = "../wayland" },
+        .wayland_protocols = .{ .path = "../wayland-protocols" },
+        // renovate: datasource=github-releases depName=wmww/gtk-layer-shell
+        .upstream = .{
+            .url = "https://github.com/wmww/gtk-layer-shell/archive/refs/tags/v0.10.1.tar.gz",
+            .hash = "N-V-__8AANQnEQD-jTtZHTLUMW9PkJ75hGx1pC4Edzo-CsnN",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

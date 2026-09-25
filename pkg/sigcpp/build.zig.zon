@@ -1,0 +1,20 @@
+.{
+    .name = .sigcpp,
+    .version = "0.0.0",
+    .fingerprint = 0x3b0c79f9f45b3efd,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // Release tarball, not a tag archive: only it ships the generated sources under untracked/.
+        // GNOME's mirror stops at 2.12.1; GitHub carries the later 2.x releases.
+        // renovate: datasource=github-releases depName=libsigcplusplus/libsigcplusplus
+        .upstream = .{
+            .url = "https://github.com/libsigcplusplus/libsigcplusplus/releases/download/2.12.2/libsigc%2B%2B-2.12.2.tar.xz",
+            .hash = "N-V-__8AAFUWagH4fX5WRCiLyJZY8T_4FeKb9yBtBZvb5Uxl",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

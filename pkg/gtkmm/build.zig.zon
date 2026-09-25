@@ -1,0 +1,21 @@
+.{
+    .name = .gtkmm,
+    .version = "0.0.0",
+    .fingerprint = 0xaebf4745fd50a987,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .atkmm = .{ .path = "../atkmm" },
+        .build_util = .{ .path = "../build-util" },
+        .glibmm = .{ .path = "../glibmm" },
+        .pangomm = .{ .path = "../pangomm" },
+        // renovate: datasource=gitlab-tags depName=GNOME/gtkmm registryUrl=https://gitlab.gnome.org
+        .upstream = .{
+            .url = "https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.11.tar.xz",
+            .hash = "N-V-__8AAKaH6gjpwXMFCwIiWMPu2Lco02wFZ6-tjDUupmTO",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

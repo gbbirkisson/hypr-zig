@@ -9,6 +9,7 @@ pub fn build(b: *std.Build) void {
 }
 
 pub fn versionFromUrl(url: []const u8) []const u8 {
+    std.debug.assert(std.mem.endsWith(u8, url, ".tar.gz") or std.mem.endsWith(u8, url, ".tar.xz"));
     var stem: []const u8 = url[0 .. url.len - ".tar.gz".len];
     if (std.mem.endsWith(u8, stem, "/archive")) stem = stem[0 .. stem.len - "/archive".len];
     var i = stem.len;
@@ -164,6 +165,31 @@ pub fn hyprwireProtocol(
     return b.fmt("{s}-{s}.cpp", .{ name, s });
 }
 
+/// Runs libwayland's wayland-scanner (C output) and copies the client header and private code into
+/// `gen`. `core_only` passes `-c`, including wayland-client-core.h instead of wayland-client.h.
+/// Returns `code` to compile.
+pub fn waylandProtocol(
+    b: *std.Build,
+    scanner: *std.Build.Step.Compile,
+    gen: *std.Build.Step.WriteFile,
+    xml: std.Build.LazyPath,
+    header: []const u8,
+    code: []const u8,
+    core_only: bool,
+) []const u8 {
+    for ([_][2][]const u8{
+        .{ "client-header", header },
+        .{ "private-code", code },
+    }) |m| {
+        const run = b.addRunArtifact(scanner);
+        if (core_only) run.addArg("-c");
+        run.addArg(m[0]);
+        run.addFileArg(xml);
+        _ = gen.addCopyFile(run.addOutputFileArg(m[1]), m[1]);
+    }
+    return code;
+}
+
 /// Copy of `root` with every patch applied (`patch -p1`).
 pub fn patched(b: *std.Build, root: std.Build.LazyPath, patches: []const std.Build.LazyPath) std.Build.LazyPath {
     const run = b.addSystemCommand(&.{
@@ -190,6 +216,9 @@ test versionFromUrl {
     try std.testing.expectEqualStrings("1.26.0", versionFromUrl("https://gitlab.freedesktop.org/wayland/wayland/-/archive/1.26.0/archive.tar.gz"));
     try std.testing.expectEqualStrings("5.5.0", versionFromUrl("https://www.lua.org/ftp/lua-5.5.0.tar.gz"));
     try std.testing.expectEqualStrings("16.6.0", versionFromUrl("https://github.com/KhronosGroup/glslang/archive/refs/tags/16.6.0.tar.gz"));
+    try std.testing.expectEqualStrings("2.66.10", versionFromUrl("https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.10.tar.xz"));
+    try std.testing.expectEqualStrings("1.14.6", versionFromUrl("https://www.cairographics.org/releases/cairomm-1.14.6.tar.xz"));
+    try std.testing.expectEqualStrings("2.12.2", versionFromUrl("https://github.com/libsigcplusplus/libsigcplusplus/releases/download/2.12.2/libsigc%2B%2B-2.12.2.tar.xz"));
 }
 
 test match {

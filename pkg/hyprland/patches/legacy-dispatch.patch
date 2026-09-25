@@ -4,8 +4,8 @@ Hyprland 0.56 evaluates every IPC dispatch as `hl.dispatch(<args>)` when the
 config is Lua, so clients that still send the old syntax fail. Waybar up to
 0.15.0 does this for workspace clicks (`dispatch workspace N`). The legacy
 dispatchers stay registered in Lua mode, so fall back to them when the Lua
-attempt fails and the first word names one. Drop this once waybar ships its
-Lua IPC support (currently only on master) and we build it.
+attempt fails and the first word names one. Drop this once we build a waybar
+release with its Lua IPC support (on master, so most likely 0.16).
 
 --- a/src/debug/HyprCtl.cpp
 +++ b/src/debug/HyprCtl.cpp

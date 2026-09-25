@@ -1,5 +1,6 @@
 conda:binutils 2.46
 conda:bison    3.8
+conda:libxml2  2.15.4
 conda:patch    2.8
 python         3.14
 zig            2026.9.10-mach  # v0.17.0-dev.2228+955228b68

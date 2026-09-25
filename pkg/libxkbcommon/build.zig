@@ -83,4 +83,20 @@ pub fn build(b: *std.Build) !void {
     const lib = b.addLibrary(.{ .name = "xkbcommon", .root_module = mod, .linkage = .static });
     lib.installHeadersDirectory(upstream.path("include/xkbcommon"), "xkbcommon", .{});
     b.installArtifact(lib);
+
+    // Registry library, as upstream's meson builds it (enable-xkbregistry); shares config.h.
+    // Noble's libxml2 (2.9.14) predates HAVE_XML_CTXT_SET_ERRORHANDLER and HAVE_XML_CTXT_PARSE_DTD.
+    const reg_mod = b.createModule(.{ .target = target, .optimize = optimize, .link_libc = true, .sanitize_c = .off });
+    reg_mod.addIncludePath(upstream.path("src"));
+    reg_mod.addIncludePath(upstream.path("include"));
+    reg_mod.addConfigHeader(config);
+    reg_mod.addCSourceFiles(.{ .root = upstream.path(""), .files = &.{
+        "src/registry.c",
+        "src/util-list.c",
+        "src/utils.c",
+    }, .flags = flags });
+    reg_mod.linkSystemLibrary("libxml-2.0", .{});
+    const reg = b.addLibrary(.{ .name = "xkbregistry", .root_module = reg_mod, .linkage = .static });
+    reg.installHeadersDirectory(upstream.path("include/xkbcommon"), "xkbcommon", .{});
+    b.installArtifact(reg);
 }

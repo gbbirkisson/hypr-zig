@@ -19,6 +19,7 @@ const apps = [_]App{
     } },
     .{ .pkg = "hyprlock", .step = "hyprlock", .bins = &.{"hyprlock"} },
     .{ .pkg = "hyprpaper", .step = "hyprpaper", .bins = &.{"hyprpaper"} },
+    .{ .pkg = "waybar", .step = "waybar", .bins = &.{"waybar"} },
     .{ .pkg = "wofi", .step = "wofi", .bins = &.{"wofi"} },
     .{ .pkg = "xdg_desktop_portal_hyprland", .step = "xdg-desktop-portal-hyprland", .bins = &.{
         "hyprland-share-picker",
@@ -27,7 +28,7 @@ const apps = [_]App{
 };
 
 // Libraries built by this repo; none may appear as a direct shared dependency of a binary.
-const static_only = "libhypr|libaquamarine|libwayland-(server|client|egl)|libinput\\.|libxkbcommon\\.|liblua|libre2|libabsl|libmuparser|libglslang|libudis86|libpugixml|libdisplay-info|libsdbus|libdate|libstdc\\+\\+";
+const static_only = "libhypr|libaquamarine|libwayland-(server|client|egl)|libinput\\.|libxkbcommon\\.|libxkbregistry|liblua|libre2|libabsl|libmuparser|libglslang|libudis86|libpugixml|libdisplay-info|libsdbus|libdate|libsigc|libglibmm|libgiomm|libcairomm|libpangomm|libatkmm|libgdkmm|libgtkmm|libjsoncpp|libfmt\\.|libspdlog|libgtk-layer-shell|libstdc\\+\\+";
 
 const check_script =
     \\for f; do

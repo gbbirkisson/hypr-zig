@@ -1,0 +1,26 @@
+.{
+    .name = .waybar,
+    .version = "0.0.0",
+    .fingerprint = 0x9c3e7889f31c83c9,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .date = .{ .path = "../date" },
+        .gtk_layer_shell = .{ .path = "../gtk-layer-shell" },
+        .gtkmm = .{ .path = "../gtkmm" },
+        .jsoncpp = .{ .path = "../jsoncpp" },
+        .libxkbcommon = .{ .path = "../libxkbcommon" },
+        .spdlog = .{ .path = "../spdlog" },
+        .wayland = .{ .path = "../wayland" },
+        .wayland_protocols = .{ .path = "../wayland-protocols" },
+        // renovate: datasource=github-tags depName=Alexays/Waybar
+        .upstream = .{
+            .url = "https://github.com/Alexays/Waybar/archive/refs/tags/0.15.0.tar.gz",
+            .hash = "N-V-__8AAA5QFQCL9SwFe6XT5PLwX3hkDiCQqbTtMzvT0hff",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

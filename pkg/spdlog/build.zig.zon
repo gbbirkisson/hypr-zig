@@ -1,0 +1,19 @@
+.{
+    .name = .spdlog,
+    .version = "0.0.0",
+    .fingerprint = 0x19cef805dd40f56,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .fmt = .{ .path = "../fmt" },
+        // renovate: datasource=github-releases depName=gabime/spdlog
+        .upstream = .{
+            .url = "https://github.com/gabime/spdlog/archive/refs/tags/v1.17.0.tar.gz",
+            .hash = "N-V-__8AALV4EgBbl10jtpTgXbAMeWyE5t24VkpFyu6JKaWR",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

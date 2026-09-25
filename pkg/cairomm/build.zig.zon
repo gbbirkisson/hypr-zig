@@ -1,0 +1,19 @@
+.{
+    .name = .cairomm,
+    .version = "0.0.0",
+    .fingerprint = 0x1155acc0b89bef55,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .sigcpp = .{ .path = "../sigcpp" },
+        // renovate: datasource=gitlab-tags depName=cairo/cairomm registryUrl=https://gitlab.freedesktop.org
+        .upstream = .{
+            .url = "https://www.cairographics.org/releases/cairomm-1.14.6.tar.xz",
+            .hash = "N-V-__8AAEPAQAA7Jn2p5HGoSVUWGpkDVWCliuRqlYqMFFke",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

@@ -10,6 +10,7 @@
         .hyprland_guiutils = .{ .path = "pkg/hyprland-guiutils" },
         .hyprlock = .{ .path = "pkg/hyprlock" },
         .hyprpaper = .{ .path = "pkg/hyprpaper" },
+        .waybar = .{ .path = "pkg/waybar" },
         .wofi = .{ .path = "pkg/wofi" },
         .xdg_desktop_portal_hyprland = .{ .path = "pkg/xdg-desktop-portal-hyprland" },
     },

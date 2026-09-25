@@ -1,0 +1,20 @@
+.{
+    .name = .glibmm,
+    .version = "0.0.0",
+    .fingerprint = 0x16dcabc522515a59,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .sigcpp = .{ .path = "../sigcpp" },
+        // Release tarball, not a tag archive: only it ships the gmmproc output under untracked/.
+        // renovate: datasource=gitlab-tags depName=GNOME/glibmm registryUrl=https://gitlab.gnome.org
+        .upstream = .{
+            .url = "https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.10.tar.xz",
+            .hash = "N-V-__8AAPxJfANTuEbyCJyBlbZmYxPUxdCAhrPQIoCcKbXc",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

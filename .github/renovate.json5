@@ -17,6 +17,8 @@
       ],
       matchStrings: [
         '// renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: registryUrl=(?<registryUrl>\\S+))?(?: extractVersion=(?<extractVersion>\\S+))?(?: versioning=(?<versioning>\\S+))?\\s+\\.upstream = \\.\\{\\s+\\.url = "(?:https://github\\.com/[^"]*/tags/|https://gitlab\\.freedesktop\\.org/[^"]*/-/archive/|https://www\\.lua\\.org/ftp/lua-)(?<currentValue>[^/"]+?)(?:/archive)?\\.tar\\.gz"',
+        '// renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: registryUrl=(?<registryUrl>\\S+))?(?: extractVersion=(?<extractVersion>\\S+))?(?: versioning=(?<versioning>\\S+))?\\s+\\.upstream = \\.\\{\\s+\\.url = "(?:https://download\\.gnome\\.org/sources/[^/]+/[^/]+/[^/"]+-|https://www\\.cairographics\\.org/releases/cairomm-)(?<currentValue>[^/"]+?)\\.tar\\.xz"',
+        '// renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: registryUrl=(?<registryUrl>\\S+))?(?: extractVersion=(?<extractVersion>\\S+))?(?: versioning=(?<versioning>\\S+))?\\s+\\.upstream = \\.\\{\\s+\\.url = "https://github\\.com/[^"]*/releases/download/(?<currentValue>[^/"]+)/[^"]*\\.tar\\.xz"',
       ],
     },
     {
@@ -45,6 +47,49 @@
         'stephenberry/glaze',
       ],
       allowedVersions: '<8',
+    },
+    {
+      description: 'gtkmm 3 needs these API series; newer ones are separate APIs',
+      matchPackageNames: [
+        'GNOME/atkmm',
+      ],
+      allowedVersions: '/^2\\.28\\./',
+    },
+    {
+      description: 'gtkmm 3 needs these API series; newer ones are separate APIs',
+      matchPackageNames: [
+        'GNOME/glibmm',
+      ],
+      allowedVersions: '/^2\\.66\\./',
+    },
+    {
+      description: 'gtkmm 3 needs these API series; newer ones are separate APIs',
+      matchPackageNames: [
+        'GNOME/gtkmm',
+      ],
+      allowedVersions: '/^3\\.24\\./',
+    },
+    {
+      description: 'gtkmm 3 needs these API series; newer ones are separate APIs',
+      matchPackageNames: [
+        'GNOME/pangomm',
+      ],
+      allowedVersions: '/^2\\.46\\./',
+    },
+    {
+      description: 'gtkmm 3 needs these API series; newer ones are separate APIs',
+      matchPackageNames: [
+        'cairo/cairomm',
+      ],
+      allowedVersions: '/^1\\.14\\./',
+    },
+    {
+      description: 'gtkmm 3 needs these API series; newer ones are separate APIs',
+      matchPackageNames: [
+        'libsigcplusplus/libsigcplusplus',
+      ],
+      // 2.99.x are sigc++ 3.0 prereleases.
+      allowedVersions: '/^2\\.12\\./',
     },
     {
       groupName: 'hyprland dependencies',

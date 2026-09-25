@@ -1,0 +1,19 @@
+.{
+    .name = .fmt,
+    .version = "0.0.0",
+    .fingerprint = 0x3420ce4f275fafaa,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        // Releases, not tags: the repository carries a stray v0.11.0 tag.
+        // renovate: datasource=github-releases depName=fmtlib/fmt
+        .upstream = .{
+            .url = "https://github.com/fmtlib/fmt/archive/refs/tags/12.2.0.tar.gz",
+            .hash = "N-V-__8AADsyLwDSr147ZHInm1KZVBMWFbljHrDbGaYXAwe_",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}

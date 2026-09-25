@@ -1,0 +1,19 @@
+.{
+    .name = .atkmm,
+    .version = "0.0.0",
+    .fingerprint = 0x21ffb2e529404560,
+    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .dependencies = .{
+        .build_util = .{ .path = "../build-util" },
+        .glibmm = .{ .path = "../glibmm" },
+        // renovate: datasource=gitlab-tags depName=GNOME/atkmm registryUrl=https://gitlab.gnome.org
+        .upstream = .{
+            .url = "https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.5.tar.xz",
+            .hash = "N-V-__8AAIoIRQCHmkTvxRzwLJNEY-G8lWSetBZYymDqPkC9",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+    },
+}
