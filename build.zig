@@ -48,15 +48,18 @@ pub fn build(b: *std.Build) void {
 
     for (apps) |app| {
         const dep = b.dependency(app.pkg, .{ .target = target, .optimize = optimize });
-        const step = b.step(app.step, b.fmt("Compile {s}", .{app.step}));
-        all.dependOn(step);
+        const step = b.step(app.step, b.fmt("Install {s}", .{app.step}));
         for (app.bins) |name| {
             const exe = dep.artifact(name);
-            step.dependOn(&exe.step);
-            b.installArtifact(exe);
+            all.dependOn(&exe.step);
+            const install_exe = b.addInstallArtifact(exe, .{});
+            b.getInstallStep().dependOn(&install_exe.step);
+            step.dependOn(&install_exe.step);
             check.addArtifactArg(exe);
         }
-        b.installDirectory(.{ .source_dir = dep.namedLazyPath("data"), .install_dir = .prefix, .install_subdir = "" });
+        const install_data = b.addInstallDirectory(.{ .source_dir = dep.namedLazyPath("data"), .install_dir = .prefix, .install_subdir = "" });
+        b.getInstallStep().dependOn(&install_data.step);
+        step.dependOn(&install_data.step);
     }
     b.step("check", "Fail if a Zig-built library is linked dynamically").dependOn(&check.step);
 }

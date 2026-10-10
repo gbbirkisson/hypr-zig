@@ -15,6 +15,7 @@ Build Hyprland ecosystem with the Zig build system
 * [Requirements](#requirements)
 * [Build](#build)
 * [Install](#install)
+* [Debug build](#debug-build)
 * [Dark mode](#dark-mode)
 
 <!-- vim-markdown-toc -->
@@ -199,6 +200,17 @@ sudo install -Dm644 -t /usr/local/share/zsh/site-functions zig-out/share/zsh/sit
 
 Hyprland finds its data under `/usr/share` or `/usr/local/share`, so install to
 one of those prefixes.
+
+## Debug build
+
+Build and install one app, with symbols, to a separate prefix:
+
+```
+zig build waybar -Doptimize=Debug -p zig-out-debug
+sudo install -Dm755 -t /usr/local/bin zig-out-debug/bin/*
+```
+
+`zig build -l` lists the app steps.
 
 ## Dark mode
 
