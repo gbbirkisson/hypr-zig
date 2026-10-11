@@ -1,0 +1,23 @@
+Saturate SleeperThread::sleep_for instead of overflowing.
+
+Modules with `"interval": "once"` or no interval sleep for
+milliseconds::max(). Converting that to system_clock::duration overflows
+long long, which UBSan aborts on in Debug builds.
+
+--- a/include/util/sleeper_thread.hpp
++++ b/include/util/sleeper_thread.hpp
+@@ -64,7 +64,13 @@
+     return condvar_.wait(lk, [this] { return signal_ || !do_run_; });
+   }
+ 
+-  auto sleep_for(std::chrono::system_clock::duration dur) {
++  template <typename Rep, typename Period>
++  auto sleep_for(std::chrono::duration<Rep, Period> interval) {
++    using clock_duration = std::chrono::steady_clock::duration;
++    const auto max = std::chrono::duration_cast<decltype(interval)>(clock_duration::max());
++    const auto dur = interval.count() >= max.count()
++                         ? clock_duration::max()
++                         : std::chrono::duration_cast<clock_duration>(interval);
+     std::unique_lock lk(mutex_);
+     CancellationGuard cancel_lock;
+     constexpr auto max_time_point = std::chrono::steady_clock::time_point::max();

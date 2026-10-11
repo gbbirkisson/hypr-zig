@@ -76,8 +76,9 @@ pub fn build(b: *std.Build) !void {
     resources.addPrefixedDirectoryArg("--sourcedir=", upstream.path("resources/icons"));
     resources.addFileArg(upstream.path("resources/icons/waybar_icons.gresource.xml"));
 
+    const src = util.patched(b, upstream.path(""), &.{b.path("patches/sleep-for-overflow.patch")});
     const mod = b.createModule(.{ .target = target, .optimize = optimize, .link_libcpp = true, .strip = optimize != .debug });
-    mod.addIncludePath(upstream.path("include"));
+    mod.addIncludePath(src.path(b, "include"));
     mod.addIncludePath(gen.getDirectory());
     mod.addCMacro("SYSCONFDIR", "\"/etc\"");
     mod.addCMacro("VERSION", b.fmt("\"{s}\"", .{version}));
@@ -126,7 +127,7 @@ pub fn build(b: *std.Build) !void {
     // hence the path.
     mod.addObjectFile(.{ .cwd_relative = b.fmt("/usr/lib/{s}-linux-gnu/libgcc_s.so.1", .{@tagName(target.result.cpu.arch)}) });
     mod.addCSourceFiles(.{
-        .root = upstream.path(""),
+        .root = src,
         .files = try util.glob(b, upstream.path(""), .{
             .include = &.{"src/**/*.cpp"},
             // Disabled features and other platforms; the rest equals meson's list.
@@ -161,7 +162,9 @@ pub fn build(b: *std.Build) !void {
             },
         }),
         // fmt 12 deprecates an operator every spdlog call site instantiates.
-        .flags = &.{ "-std=c++20", "-Wno-deprecated-declarations" },
+        // SleeperThread::stop cancels threads blocked in libc calls like fgets. Without -fno-builtin,
+        // LLVM marks those nounwind, so the cancellation unwind hits std::terminate.
+        .flags = &.{ "-std=c++20", "-Wno-deprecated-declarations", "-fno-builtin" },
     });
     mod.addCSourceFiles(.{ .root = gen.getDirectory(), .files = c_srcs.items, .flags = &.{"-std=c11"} });
     // Registers itself from a constructor, so it must be an object of the executable.
