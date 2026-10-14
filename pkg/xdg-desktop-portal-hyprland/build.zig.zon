@@ -17,8 +17,8 @@
         // libc++); master's picker uses hyprtoolkit. Switch to release tags once a release ships it.
         // renovate: datasource=git-refs depName=xdg-desktop-portal-hyprland packageName=https://github.com/hyprwm/xdg-desktop-portal-hyprland currentValue=master
         .upstream = .{
-            .url = "https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/e87ae7823e7bf0601385220c69b5a3b245123fc5.tar.gz",
-            .hash = "N-V-__8AAM04BABU8IPzKXsQmh7jX4bSqILC0KXQ8c9H0HM-",
+            .url = "https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/0121b2e3f85c7ebf6280173f1054f7e5606262d1.tar.gz",
+            .hash = "N-V-__8AAO06BAA6YNLjnPuYIUINIiOxv-f_JHbPtcaojo_k",
         },
     },
     .paths = .{
