@@ -8,7 +8,7 @@
         // renovate: datasource=github-tags depName=hyprwm/hyprland-protocols
         .upstream = .{
             .url = "https://github.com/hyprwm/hyprland-protocols/archive/refs/tags/v0.8.0.tar.gz",
-            .hash = "N-V-__8AAObUAACLE06eB4Nxoh71Fo-Qw4pzxaDG8HNo8UYJ",
+            .hash = "N-V-__8AAKzlAACHLhF_pucnN-OmhJfg1uSCNDtOPhRi8lFa",
         },
     },
     .paths = .{
