@@ -122,6 +122,7 @@ sudo apt install \
 # waybar
 sudo apt install \
   libdbusmenu-gtk3-dev \
+  libnl-genl-3-dev \
   libpulse-dev
 
 # xdg-desktop-portal-hyprland
@@ -154,6 +155,13 @@ sudo apt install \
 ```
 zig build           # compile
 zig build check     # assert no Zig-built library is linked dynamically
+```
+
+Single app, e.g. waybar (steps: `zig build -l`):
+
+```
+zig build waybar
+sudo install -Dm755 -t /usr/local/bin zig-out/bin/waybar
 ```
 
 ## Install

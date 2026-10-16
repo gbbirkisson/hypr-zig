@@ -82,7 +82,7 @@ pub fn build(b: *std.Build) !void {
     mod.addIncludePath(gen.getDirectory());
     mod.addCMacro("SYSCONFDIR", "\"/etc\"");
     mod.addCMacro("VERSION", b.fmt("\"{s}\"", .{version}));
-    // Meson's defines for this configuration (Linux; dbusmenu, pulseaudio, libudev, rfkill on), plus
+    // Meson's defines for this configuration (Linux; dbusmenu, libnl, pulseaudio, libudev, rfkill on), plus
     // the SPDLOG_* and USE_OS_TZDB Cflags spdlog's and date's pkg-config files would add.
     for ([_][]const u8{
         "HAVE_CPU_LINUX",
@@ -92,6 +92,7 @@ pub fn build(b: *std.Build) !void {
         "HAVE_HYPRLAND",
         "HAVE_LANGINFO_1STDAY",
         "HAVE_LIBDATE",
+        "HAVE_LIBNL",
         "HAVE_LIBPULSE",
         "HAVE_LIBUDEV",
         "HAVE_MEMORY_LINUX",
@@ -119,6 +120,8 @@ pub fn build(b: *std.Build) !void {
         "dbusmenu-gtk3-0.4",
         "gio-unix-2.0",
         "gtk+-3.0",
+        "libnl-3.0",
+        "libnl-genl-3.0",
         "libpulse",
         "libudev",
     }) |l| mod.linkSystemLibrary(l, .{});
@@ -146,7 +149,6 @@ pub fn build(b: *std.Build) !void {
                 "src/modules/mpd/mpd.cpp",
                 "src/modules/mpd/state.cpp",
                 "src/modules/mpris/mpris.cpp",
-                "src/modules/network.cpp",
                 "src/modules/niri/backend.cpp",
                 "src/modules/niri/language.cpp",
                 "src/modules/niri/window.cpp",
