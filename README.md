@@ -14,7 +14,7 @@ Build Hyprland ecosystem with the Zig build system
 
 * [Requirements](#requirements)
 * [Build](#build)
-* [Install](#install)
+* [Install all](#install-all)
 * [Debug build](#debug-build)
 * [Dark mode](#dark-mode)
 
@@ -164,47 +164,13 @@ zig build waybar
 sudo install -Dm755 -t /usr/local/bin zig-out/bin/waybar
 ```
 
-## Install
+## Install all
 
 ```
-zig build install
+make install
 ```
 
-Then copy the tree into place, by type:
-
-```
-# Binaries
-sudo install -Dm755 -t /usr/local/bin zig-out/bin/*
-
-# PAM (hyprlock)
-sudo install -Dm644 -t /etc/pam.d zig-out/etc/pam.d/*
-
-# systemd user units
-sudo install -Dm644 -t /usr/local/lib/systemd/user zig-out/lib/systemd/user/*
-
-# D-Bus and portals; xdg-desktop-portal only reads .portal files from /usr/share
-sudo install -Dm644 -t /usr/local/share/dbus-1/services zig-out/share/dbus-1/services/*
-sudo install -Dm644 -t /usr/local/share/xdg-desktop-portal zig-out/share/xdg-desktop-portal/*.conf
-sudo install -Dm644 -t /usr/share/xdg-desktop-portal/portals zig-out/share/xdg-desktop-portal/portals/*
-
-# Sessions
-sudo install -Dm644 -t /usr/local/share/wayland-sessions zig-out/share/wayland-sessions/*
-
-# Hyprland data: example configs, wallpapers, Lua stubs
-sudo install -Dm644 -t /usr/local/share/hypr $(find zig-out/share/hypr -maxdepth 1 -type f)
-sudo install -Dm644 -t /usr/local/share/hypr/stubs zig-out/share/hypr/stubs/*
-
-# Man pages
-for d in zig-out/share/man/man*; do sudo install -Dm644 -t "/usr/local/share/man/${d##*/}" "$d"/*; done
-
-# Waybar's default config
-sudo install -Dm644 -t /etc/xdg/waybar zig-out/etc/xdg/waybar/*
-
-# Shell completions (hyprctl)
-sudo install -Dm644 -t /usr/local/share/bash-completion/completions zig-out/share/bash-completion/completions/*
-sudo install -Dm644 -t /usr/local/share/fish/vendor_completions.d zig-out/share/fish/vendor_completions.d/*
-sudo install -Dm644 -t /usr/local/share/zsh/site-functions zig-out/share/zsh/site-functions/*
-```
+Builds, then copies `zig-out` into `/usr/local` and system paths with `sudo`.
 
 Hyprland finds its data under `/usr/share` or `/usr/local/share`, so install to
 one of those prefixes.
