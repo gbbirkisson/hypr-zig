@@ -14,124 +14,23 @@ Build Hyprland ecosystem with the Zig build system
 
 * [Requirements](#requirements)
 * [Build](#build)
-* [Install all](#install-all)
+* [Install](#install)
+  * [All](#all)
+  * [Single](#single)
 * [Debug build](#debug-build)
-* [Dark mode](#dark-mode)
+* [Dark mode (GTK)](#dark-mode-gtk)
 
 <!-- vim-markdown-toc -->
 
 ## Requirements
 
-Build tools (Zig, bison, binutils, patch, Python, xmllint) are pinned in `.tool-versions`.
+Installs build tools (pinned in `.tool-versions`) with `mise` and libraries with `apt`.
 
 ```
-# Install build tools
-mise install
-
-# Install dependencies
-
-# Build tools and data: pkg-config, aquamarine (hwdata), libinput (quirks), libxkbcommon (keymaps)
-sudo apt install \
-  hwdata \
-  libinput-bin \
-  pkg-config \
-  xkb-data
-
-# Graphics: aquamarine, hyprgraphics, hyprland, hyprlock, hyprtoolkit
-sudo apt install \
-  libdrm-dev \
-  libegl-dev \
-  libgbm-dev \
-  libgles-dev \
-  libpixman-1-dev
-
-# Drawing and text: cairomm, hyprcursor, hyprgraphics, hyprland, hyprlock, hyprtoolkit, pangomm
-sudo apt install \
-  libcairo2-dev \
-  libpango1.0-dev
-
-# Images: hyprcursor, hyprgraphics, hyprpaper
-sudo apt install \
-  libjpeg-dev \
-  libmagic-dev \
-  libpng-dev \
-  librsvg2-dev \
-  libwebp-dev \
-  libzip-dev
-
-# Input: aquamarine, libinput, waybar
-sudo apt install \
-  libevdev-dev \
-  libmtdev-dev \
-  libseat-dev \
-  libudev-dev
-
-# Wayland: wayland, hyprwire
-sudo apt install \
-  libexpat1-dev \
-  libffi-dev
-
-# GLib (and gdbus-codegen, glib-compile-resources): glibmm, hyprland, waybar, wofi
-sudo apt install \
-  libglib2.0-dev
-
-# GTK (and gtk+-unix-print-3.0): gtk-layer-shell, gtkmm, waybar, wofi
-sudo apt install \
-  libgtk-3-dev
-
-# sdbus-cpp: hypridle, hyprlock, xdg-desktop-portal-hyprland
-sudo apt install \
-  libsystemd-dev
-
-# uuid: hyprland, xdg-desktop-portal-hyprland
-sudo apt install \
-  uuid-dev
-
-# atkmm
-sudo apt install \
-  libatk1.0-dev
-
-# batsignal
-sudo apt install \
-  libnotify-dev
-
-# gtkmm
-sudo apt install \
-  libepoxy-dev \
-  libgdk-pixbuf-2.0-dev
-
-# hyprland
-sudo apt install \
-  libeis-dev \
-  liblcms2-dev \
-  libreadline-dev \
-  libxcursor-dev
-
-# hyprlock
-sudo apt install \
-  libpam0g-dev
-
-# hyprtoolkit
-sudo apt install \
-  libiniparser-dev
-
-# libxkbcommon (xkbregistry)
-sudo apt install \
-  libxml2-dev
-
-# waybar
-sudo apt install \
-  libdbusmenu-gtk3-dev \
-  libnl-genl-3-dev \
-  libpulse-dev
-
-# xdg-desktop-portal-hyprland
-sudo apt install \
-  libpipewire-0.3-dev \
-  libspa-0.2-dev
+make deps
 ```
 
-Nice to have apps when running Hyprland.
+Nice to have apps when running Hyprland:
 
 ```
 # Opinionated list of nice-to-haves
@@ -157,41 +56,40 @@ zig build           # compile
 zig build check     # assert no Zig-built library is linked dynamically
 ```
 
-Single app, e.g. waybar (steps: `zig build -l`):
+## Install
+
+### All
+
+Builds, then copies `zig-out` into `PREFIX` (default `/usr/local`) and system paths with `sudo`.
+
+```
+make install
+```
+
+> Hyprland only finds its data under `/usr/share` or `/usr/local/share`.
+
+### Single
+
+Build and install single app, e.g. waybar (steps: `zig build -l`):
 
 ```
 zig build waybar
 sudo install -Dm755 -t /usr/local/bin zig-out/bin/waybar
 ```
 
-## Install all
-
-```
-make install
-```
-
-Builds, then copies `zig-out` into `/usr/local` and system paths with `sudo`.
-
-Hyprland finds its data under `/usr/share` or `/usr/local/share`, so install to
-one of those prefixes.
-
 ## Debug build
 
-Build and install one app, with symbols, to a separate prefix:
+Build and install one app with debug mode and symbols:
 
 ```
 zig build waybar -Doptimize=Debug -p zig-out-debug
-sudo install -Dm755 -t /usr/local/bin zig-out-debug/bin/*
+sudo install -Dm755 -t /usr/local/bin zig-out-debug/bin/waybar
 ```
 
 `zig build -l` lists the app steps.
 
-## Dark mode
+## Dark mode (GTK)
 
 ```
-# GTK4/libadwaita, and via the portal Firefox, Chromium and Electron
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-# GTK3
-gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
+make dark
 ```
