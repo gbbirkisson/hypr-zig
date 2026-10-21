@@ -18,7 +18,7 @@
         // renovate: datasource=git-refs depName=xdg-desktop-portal-hyprland packageName=https://github.com/hyprwm/xdg-desktop-portal-hyprland currentValue=master
         .upstream = .{
             .url = "https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/167adef947a6067d1b90317daa0c6625641b27fb.tar.gz",
-            .hash = "N-V-__8AAD49BADas7r1ylPou_t3HS12S-KcjT-JhyKOdUN2",
+            .hash = "N-V-__8AAP1cBQAOCqeBIvtm64X-gDUTnGe93leeHiLsT15e",
         },
     },
     .paths = .{
