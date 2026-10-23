@@ -7,8 +7,8 @@
         .build_util = .{ .path = "../build-util" },
         // renovate: datasource=github-tags depName=hyprwm/hyprutils
         .upstream = .{
-            .url = "https://github.com/hyprwm/hyprutils/archive/refs/tags/v0.14.2.tar.gz",
-            .hash = "N-V-__8AAOsABgCWktnGNKLnGlQYCJyETJFYxjg0lwOOl55p",
+            .url = "https://github.com/hyprwm/hyprutils/archive/refs/tags/v0.14.3.tar.gz",
+            .hash = "N-V-__8AAAkpBgCGv_DsjguO8ziRctH457G1tCnzy8XAG84g",
         },
     },
     .paths = .{
