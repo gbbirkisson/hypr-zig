@@ -4,6 +4,9 @@ const util = @import("build_util");
 const wayland_protocols = [_][]const u8{
     "stable/linux-dmabuf/linux-dmabuf-v1.xml",
     "staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml",
+    "staging/ext-image-capture-source/ext-image-capture-source-v1.xml",
+    "staging/ext-image-copy-capture/ext-image-copy-capture-v1.xml",
+    "staging/ext-workspace/ext-workspace-v1.xml",
     "unstable/xdg-output/xdg-output-unstable-v1.xml",
 };
 
@@ -12,6 +15,7 @@ const hyprland_protocols = [_][]const u8{
     "protocols/hyprland-input-capture-v1.xml",
     "protocols/hyprland-toplevel-export-v1.xml",
     "protocols/hyprland-toplevel-mapping-v1.xml",
+    "protocols/hyprland-workspace-image-capture-source-v1.xml",
 };
 
 pub fn build(b: *std.Build) !void {
