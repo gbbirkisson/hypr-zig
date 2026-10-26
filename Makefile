@@ -64,6 +64,13 @@ DEPS += \
 	libeis-dev \
 	liblcms2-dev \
 	libreadline-dev \
+	libxcb-composite0-dev \
+	libxcb-errors-dev \
+	libxcb-icccm4-dev \
+	libxcb-render0-dev \
+	libxcb-res0-dev \
+	libxcb-xfixes0-dev \
+	libxcb1-dev \
 	libxcursor-dev
 # hyprlock
 DEPS += \

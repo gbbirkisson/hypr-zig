@@ -135,7 +135,6 @@ pub fn build(b: *std.Build) !void {
     mod.addIncludePath(src.path(b, "src"));
     mod.addIncludePath(b.dependency("glaze", .{}).namedLazyPath("include"));
     mod.addCMacro("HYPRLAND_VERSION", "\"" ++ version ++ "\"");
-    mod.addCMacro("NO_XWAYLAND", "");
     mod.addCMacro("USES_SYSTEMD", "");
     mod.addCMacro("HAS_EXECINFO", "");
     mod.addCMacro("MUPARSER_STATIC", "");
@@ -169,6 +168,13 @@ pub fn build(b: *std.Build) !void {
         "pangocairo",
         "pixman-1",
         "uuid",
+        "xcb",
+        "xcb-composite",
+        "xcb-errors",
+        "xcb-icccm",
+        "xcb-render",
+        "xcb-res",
+        "xcb-xfixes",
         "xcursor",
     }) |l| mod.linkSystemLibrary(l, .{});
 
@@ -185,8 +191,7 @@ pub fn build(b: *std.Build) !void {
         "-frtti",
         "-std=c++26",
     };
-    // XWM.cpp includes xcb headers before its NO_XWAYLAND guard; everything after is guarded.
-    mod.addCSourceFiles(.{ .root = src, .files = try util.glob(b, upstream.path(""), .{ .include = &.{"src/**/*.cpp"}, .exclude = &.{"src/xwayland/XWM.cpp"} }), .flags = flags });
+    mod.addCSourceFiles(.{ .root = src, .files = try util.glob(b, upstream.path(""), .{ .include = &.{"src/**/*.cpp"} }), .flags = flags });
     mod.addCSourceFiles(.{ .root = gen.getDirectory(), .files = proto_srcs.items, .flags = flags });
 
     const exe = b.addExecutable(.{ .name = "Hyprland", .root_module = mod });

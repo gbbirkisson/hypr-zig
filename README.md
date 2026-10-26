@@ -46,7 +46,8 @@ sudo apt install \
   sway-notification-center \
   wl-clipboard \
   xdg-desktop-portal \
-  xdg-desktop-portal-gtk
+  xdg-desktop-portal-gtk \
+  xwayland
 ```
 
 ## Build
