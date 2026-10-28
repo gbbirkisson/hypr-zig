@@ -25,8 +25,8 @@
         .glaze = .{ .path = "../glaze" },
         // renovate: datasource=github-tags depName=hyprwm/Hyprland
         .upstream = .{
-            .url = "https://github.com/hyprwm/Hyprland/archive/refs/tags/v0.56.2.tar.gz",
-            .hash = "N-V-__8AAObhbANxg8zYAhQXTUZpP9FmOdejBrr7yQXzYk4H",
+            .url = "https://github.com/hyprwm/Hyprland/archive/refs/tags/v0.57.0.tar.gz",
+            .hash = "N-V-__8AAKjchwMvLSFd9cZ3lBlxDxNJg1jb2xyu3yNnu81T",
         },
     },
     .paths = .{
