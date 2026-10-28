@@ -124,18 +124,20 @@ pub fn build(b: *std.Build) !void {
         .install_subdir = "gen",
     }).step);
 
-    const src = util.patched(b, upstream.path(""), &.{b.path("patches/legacy-dispatch.patch")});
+    const src = upstream.path("");
     // Plugin hooks resolve symbols with `nm -D`, which reads .dynsym (kept by rdynamic), so stripping is safe.
     const mod = b.createModule(.{ .target = target, .optimize = optimize, .link_libcpp = true, .strip = optimize != .debug });
     // Generated files are included by relative paths ("../version.h", "shaders/Shaders.hpp",
-    // "../../protocols/cursor-shape-v1.hpp"); these two include dirs make all of them resolve in `gen`.
+    // "../../protocols/cursor-shape-v1.hpp", "../../../protocols/..."); these include dirs make all of them resolve in `gen`.
     mod.addIncludePath(gen.getDirectory().path(b, "protocols"));
     mod.addIncludePath(gen.getDirectory().path(b, "src/render"));
+    mod.addIncludePath(gen.getDirectory().path(b, "src/render/shaders"));
     mod.addIncludePath(src);
     mod.addIncludePath(src.path(b, "src"));
     mod.addIncludePath(b.dependency("glaze", .{}).namedLazyPath("include"));
     mod.addCMacro("HYPRLAND_VERSION", "\"" ++ version ++ "\"");
     mod.addCMacro("USES_SYSTEMD", "");
+    mod.addCMacro("HAS_RTKIT", "");
     mod.addCMacro("HAS_EXECINFO", "");
     mod.addCMacro("MUPARSER_STATIC", "");
 
@@ -152,6 +154,7 @@ pub fn build(b: *std.Build) !void {
         .{ "lua", "lua" },
         .{ "muparser", "muparser" },
         .{ "re2", "re2" },
+        .{ "sdbus_cpp", "sdbus-c++" },
         .{ "udis86", "udis86" },
     }) |d| mod.linkLibrary(b.dependency(d[0], opts).artifact(d[1]));
     mod.linkLibrary(wayland.artifact("wayland-server"));
@@ -162,6 +165,7 @@ pub fn build(b: *std.Build) !void {
         "gio-2.0",
         "glesv2",
         "lcms2",
+        "libcanberra",
         "libdrm",
         "libeis-1.0",
         "pango",
@@ -191,7 +195,10 @@ pub fn build(b: *std.Build) !void {
         "-frtti",
         "-std=c++26",
     };
-    mod.addCSourceFiles(.{ .root = src, .files = try util.glob(b, upstream.path(""), .{ .include = &.{"src/**/*.cpp"} }), .flags = flags });
+    // Upstream sources rely on its precompiled header for std includes.
+    const pch = try upstream.builder.root.joinString(b.allocator, "src/pch/pch.hpp");
+    const src_flags = try std.mem.concat(b.allocator, []const u8, &.{ flags, &.{ "-include", pch } });
+    mod.addCSourceFiles(.{ .root = src, .files = try util.glob(b, upstream.path(""), .{ .include = &.{"src/**/*.cpp"} }), .flags = src_flags });
     mod.addCSourceFiles(.{ .root = gen.getDirectory(), .files = proto_srcs.items, .flags = flags });
 
     const exe = b.addExecutable(.{ .name = "Hyprland", .root_module = mod });
@@ -238,9 +245,7 @@ pub fn build(b: *std.Build) !void {
         .{ "docs/Hyprland.1", "share/man/man1/Hyprland.1" },
         .{ "docs/hyprctl.1", "share/man/man1/hyprctl.1" },
         .{ "example/hyprland.lua", "share/hypr/hyprland.lua" },
-        .{ "hyprctl/hyprctl.bash", "share/bash-completion/completions/hyprctl" },
-        .{ "hyprctl/hyprctl.fish", "share/fish/vendor_completions.d/hyprctl.fish" },
-        .{ "hyprctl/hyprctl.zsh", "share/zsh/site-functions/_hyprctl" },
+        .{ "systemd/hyprland-session.target", "lib/systemd/user/hyprland-session.target" },
         .{ "systemd/hyprland-uwsm.desktop", "share/wayland-sessions/hyprland-uwsm.desktop" },
     }) |f| _ = data.addCopyFile(upstream.path(f[0]), f[1]);
     _ = data.addCopyFile(stubs_lua, "share/hypr/stubs/hl.meta.lua");

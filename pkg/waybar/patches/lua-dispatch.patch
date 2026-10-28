@@ -1,0 +1,37 @@
+Send Lua dispatch syntax for workspace clicks.
+
+Hyprland 0.57 only supports Lua configs and evaluates every IPC dispatch as
+`hl.dispatch(<args>)`, so the hyprlang dispatchers waybar 0.15.0 sends fail.
+Drop this once we build a waybar release with Lua IPC support (on master, so
+most likely 0.16).
+
+--- a/src/modules/hyprland/workspace.cpp
++++ b/src/modules/hyprland/workspace.cpp
+@@ -70,21 +70,15 @@
+   if (bt->type == GDK_BUTTON_PRESS) {
+     try {
+       if (id() > 0) {  // normal
+-        if (m_workspaceManager.moveToMonitor()) {
+-          m_ipc.getSocket1Reply("dispatch focusworkspaceoncurrentmonitor " + std::to_string(id()));
+-        } else {
+-          m_ipc.getSocket1Reply("dispatch workspace " + std::to_string(id()));
+-        }
++        m_ipc.getSocket1Reply(fmt::format("dispatch hl.dsp.focus({{ workspace = {}, on_current_monitor = {} }})",
++                                          id(), m_workspaceManager.moveToMonitor()));
+       } else if (!isSpecial()) {  // named (this includes persistent)
+-        if (m_workspaceManager.moveToMonitor()) {
+-          m_ipc.getSocket1Reply("dispatch focusworkspaceoncurrentmonitor name:" + name());
+-        } else {
+-          m_ipc.getSocket1Reply("dispatch workspace name:" + name());
+-        }
++        m_ipc.getSocket1Reply(fmt::format("dispatch hl.dsp.focus({{ workspace = [==[name:{}]==], on_current_monitor = {} }})",
++                                          name(), m_workspaceManager.moveToMonitor()));
+       } else if (id() != -99) {  // named special
+-        m_ipc.getSocket1Reply("dispatch togglespecialworkspace " + name());
++        m_ipc.getSocket1Reply(fmt::format("dispatch hl.dsp.workspace.toggle_special([==[{}]==])", name()));
+       } else {  // special
+-        m_ipc.getSocket1Reply("dispatch togglespecialworkspace");
++        m_ipc.getSocket1Reply("dispatch hl.dsp.workspace.toggle_special()");
+       }
+       return true;
+     } catch (const std::exception& e) {

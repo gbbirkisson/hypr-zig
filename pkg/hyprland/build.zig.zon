@@ -20,6 +20,7 @@
         .lua = .{ .path = "../lua" },
         .udis86 = .{ .path = "../udis86" },
         .re2 = .{ .path = "../re2" },
+        .sdbus_cpp = .{ .path = "../sdbus-cpp" },
         .muparser = .{ .path = "../muparser" },
         .glslang = .{ .path = "../glslang" },
         .glaze = .{ .path = "../glaze" },
@@ -32,6 +33,5 @@
     .paths = .{
         "build.zig",
         "build.zig.zon",
-        "patches",
     },
 }

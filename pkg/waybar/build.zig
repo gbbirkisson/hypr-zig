@@ -76,7 +76,7 @@ pub fn build(b: *std.Build) !void {
     resources.addPrefixedDirectoryArg("--sourcedir=", upstream.path("resources/icons"));
     resources.addFileArg(upstream.path("resources/icons/waybar_icons.gresource.xml"));
 
-    const src = util.patched(b, upstream.path(""), &.{b.path("patches/sleep-for-overflow.patch")});
+    const src = util.patched(b, upstream.path(""), &.{ b.path("patches/sleep-for-overflow.patch"), b.path("patches/lua-dispatch.patch") });
     const mod = b.createModule(.{ .target = target, .optimize = optimize, .link_libcpp = true, .strip = optimize != .debug });
     mod.addIncludePath(src.path(b, "include"));
     mod.addIncludePath(gen.getDirectory());

@@ -43,7 +43,7 @@ DEPS += \
 # GTK (and gtk+-unix-print-3.0): gtk-layer-shell, gtkmm, waybar, wofi
 DEPS += \
 	libgtk-3-dev
-# sdbus-cpp: hypridle, hyprlock, xdg-desktop-portal-hyprland
+# sdbus-cpp: hypridle, hyprland, hyprlock, xdg-desktop-portal-hyprland
 DEPS += \
 	libsystemd-dev
 # uuid: hyprland, xdg-desktop-portal-hyprland
@@ -61,6 +61,7 @@ DEPS += \
 	libgdk-pixbuf-2.0-dev
 # hyprland
 DEPS += \
+	libcanberra-dev \
 	libeis-dev \
 	liblcms2-dev \
 	libreadline-dev \
