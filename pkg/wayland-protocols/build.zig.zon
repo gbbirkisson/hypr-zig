@@ -8,7 +8,7 @@
         // renovate: datasource=gitlab-tags depName=wayland/wayland-protocols registryUrl=https://gitlab.freedesktop.org
         .upstream = .{
             .url = "https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/1.50/archive.tar.gz",
-            .hash = "N-V-__8AAOTNEADZkChhsSciYizE4kIbZsozjDZXVeG5R_uY",
+            .hash = "N-V-__8AAOM9EQA8SyN285exZO9Ib8FLAhn4cDW7q55sCWMl",
         },
     },
     .paths = .{
