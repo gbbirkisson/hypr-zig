@@ -16,7 +16,7 @@
         .wayland_protocols = .{ .path = "../wayland-protocols" },
         // renovate: datasource=github-tags depName=hyprwm/hyprlock
         .upstream = .{
-            .url = "https://github.com/hyprwm/hyprlock/archive/refs/tags/v0.9.6.tar.gz",
+            .url = "https://github.com/hyprwm/hyprlock/archive/refs/tags/v0.9.7.tar.gz",
             .hash = "N-V-__8AAM-xBQD8w8XZp90ewEmWu1QNz9wXd0k2CKrebI8l",
         },
     },
