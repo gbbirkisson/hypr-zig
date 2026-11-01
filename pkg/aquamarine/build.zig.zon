@@ -13,7 +13,7 @@
         // renovate: datasource=github-tags depName=hyprwm/aquamarine
         .upstream = .{
             .url = "https://github.com/hyprwm/aquamarine/archive/refs/tags/v0.16.0.tar.gz",
-            .hash = "N-V-__8AAJ0ACQDK-s4tOC9CPFgkfIcpSnJSgGyL4xDqcLHY",
+            .hash = "N-V-__8AAB4fCQBoGV65S6ByzsTN5aZJreGNyGJBLRY2uHoZ",
         },
         // renovate: datasource=git-refs depName=libdisplay-info packageName=https://github.com/allyourcodebase/libdisplay-info currentValue=main
         .libdisplay_info = .{

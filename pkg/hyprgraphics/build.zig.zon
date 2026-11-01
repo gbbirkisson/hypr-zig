@@ -9,7 +9,7 @@
         // renovate: datasource=github-tags depName=hyprwm/hyprgraphics
         .upstream = .{
             .url = "https://github.com/hyprwm/hyprgraphics/archive/refs/tags/v0.6.0.tar.gz",
-            .hash = "N-V-__8AAI0cCwBIXQKgCPhUFKMlbdMkxQAtqgMcUFLspZy5",
+            .hash = "N-V-__8AADYkCwDeZKXTGQUTDUzrNmzFFrmjdNKe-QeMeWy8",
         },
     },
     .paths = .{
