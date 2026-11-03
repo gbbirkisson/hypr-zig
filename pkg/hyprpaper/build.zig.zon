@@ -11,8 +11,8 @@
         .hyprwire = .{ .path = "../hyprwire" },
         // renovate: datasource=github-tags depName=hyprwm/hyprpaper
         .upstream = .{
-            .url = "https://github.com/hyprwm/hyprpaper/archive/refs/tags/v0.8.4.tar.gz",
-            .hash = "N-V-__8AACNJAQC-_5IeEOWhkAx92ncfT5Djp6TJJBWtBtN4",
+            .url = "https://github.com/hyprwm/hyprpaper/archive/refs/tags/v0.8.5.tar.gz",
+            .hash = "N-V-__8AAC5JAQBfUwYbP--y5qa8mcZbVFxZGo7wJVa_T9H1",
         },
     },
     .paths = .{

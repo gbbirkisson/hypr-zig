@@ -8,8 +8,8 @@
         .hyprutils = .{ .path = "../hyprutils" },
         // renovate: datasource=github-tags depName=hyprwm/hyprgraphics
         .upstream = .{
-            .url = "https://github.com/hyprwm/hyprgraphics/archive/refs/tags/v0.5.1.tar.gz",
-            .hash = "N-V-__8AAI0cCwBIXQKgCPhUFKMlbdMkxQAtqgMcUFLspZy5",
+            .url = "https://github.com/hyprwm/hyprgraphics/archive/refs/tags/v0.6.0.tar.gz",
+            .hash = "N-V-__8AADYkCwDeZKXTGQUTDUzrNmzFFrmjdNKe-QeMeWy8",
         },
     },
     .paths = .{
