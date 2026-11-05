@@ -15,7 +15,7 @@
         .wayland_protocols = .{ .path = "../wayland-protocols" },
         // renovate: datasource=github-tags depName=Alexays/Waybar
         .upstream = .{
-            .url = "https://github.com/Alexays/Waybar/archive/refs/tags/0.15.0.tar.gz",
+            .url = "https://github.com/Alexays/Waybar/archive/refs/tags/0.16.0.tar.gz",
             .hash = "N-V-__8AAA5QFQCL9SwFe6XT5PLwX3hkDiCQqbTtMzvT0hff",
         },
     },
