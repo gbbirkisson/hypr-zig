@@ -16,7 +16,7 @@
         // renovate: datasource=github-tags depName=Alexays/Waybar
         .upstream = .{
             .url = "https://github.com/Alexays/Waybar/archive/refs/tags/0.16.0.tar.gz",
-            .hash = "N-V-__8AAA5QFQCL9SwFe6XT5PLwX3hkDiCQqbTtMzvT0hff",
+            .hash = "N-V-__8AANERJADERjAqs8ja7JhJ8K6rYnG3s4r4ITSxdIQd",
         },
     },
     .paths = .{
