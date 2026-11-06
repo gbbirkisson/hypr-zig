@@ -6,6 +6,7 @@ pub const version = util.versionFromUrl(manifest.dependencies.upstream.url);
 
 const local_protocols = [_][]const u8{
     "dwl-ipc-unstable-v2",
+    "ext-idle-notify-v1",
     "river-control-unstable-v1",
     "river-status-unstable-v1",
     "wlr-foreign-toplevel-management-unstable-v1",
@@ -76,7 +77,7 @@ pub fn build(b: *std.Build) !void {
     resources.addPrefixedDirectoryArg("--sourcedir=", upstream.path("resources/icons"));
     resources.addFileArg(upstream.path("resources/icons/waybar_icons.gresource.xml"));
 
-    const src = util.patched(b, upstream.path(""), &.{ b.path("patches/sleep-for-overflow.patch"), b.path("patches/lua-dispatch.patch") });
+    const src = util.patched(b, upstream.path(""), &.{b.path("patches/sleep-for-overflow.patch")});
     const mod = b.createModule(.{ .target = target, .optimize = optimize, .link_libcpp = true, .strip = optimize != .debug });
     mod.addIncludePath(src.path(b, "include"));
     mod.addIncludePath(gen.getDirectory());
@@ -138,6 +139,7 @@ pub fn build(b: *std.Build) !void {
                 "src/modules/cava/cavaGLSL.cpp",
                 "src/modules/cava/cavaRaw.cpp",
                 "src/modules/cava/cava_backend.cpp",
+                "src/modules/cava/cava_frontend.cpp",
                 "src/modules/cpu_frequency/bsd.cpp",
                 "src/modules/cpu_usage/bsd.cpp",
                 "src/modules/gamemode.cpp",
@@ -145,6 +147,12 @@ pub fn build(b: *std.Build) !void {
                 "src/modules/inhibitor.cpp",
                 "src/modules/jack.cpp",
                 "src/modules/keyboard_state.cpp",
+                "src/modules/mango/backend.cpp",
+                "src/modules/mango/keymode.cpp",
+                "src/modules/mango/language.cpp",
+                "src/modules/mango/layout.cpp",
+                "src/modules/mango/window.cpp",
+                "src/modules/mango/workspaces.cpp",
                 "src/modules/memory/bsd.cpp",
                 "src/modules/mpd/mpd.cpp",
                 "src/modules/mpd/state.cpp",
@@ -152,13 +160,21 @@ pub fn build(b: *std.Build) !void {
                 "src/modules/niri/backend.cpp",
                 "src/modules/niri/language.cpp",
                 "src/modules/niri/window.cpp",
+                "src/modules/niri/workspace.cpp",
                 "src/modules/niri/workspaces.cpp",
                 "src/modules/privacy/privacy.cpp",
                 "src/modules/privacy/privacy_item.cpp",
                 "src/modules/simpleclock.cpp",
                 "src/modules/sndio.cpp",
+                "src/modules/umbriel/backend.cpp",
+                "src/modules/umbriel/layout.cpp",
+                "src/modules/umbriel/window.cpp",
+                "src/modules/umbriel/workspace.cpp",
+                "src/modules/umbriel/workspaces.cpp",
                 "src/modules/upower.cpp",
                 "src/modules/wireplumber.cpp",
+                "src/modules/wwan.cpp",
+                "src/util/geoclue_backend.cpp",
                 "src/util/pipewire/pipewire_backend.cpp",
                 "src/util/pipewire/privacy_node_info.cpp",
             },
