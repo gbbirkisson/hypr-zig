@@ -27,7 +27,7 @@
         // renovate: datasource=github-tags depName=hyprwm/Hyprland
         .upstream = .{
             .url = "https://github.com/hyprwm/Hyprland/archive/refs/tags/v0.57.2.tar.gz",
-            .hash = "N-V-__8AAFp0iAMvjqf9XU0P1JSCgxte7f5r0DvGdTBXBk-G",
+            .hash = "N-V-__8AAPShiAPUeIlDwl29pkrFTOjFeeL3mtc9vKzrgn-K",
         },
     },
     .paths = .{
