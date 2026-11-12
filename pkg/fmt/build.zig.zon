@@ -8,8 +8,8 @@
         // Releases, not tags: the repository carries a stray v0.11.0 tag.
         // renovate: datasource=github-releases depName=fmtlib/fmt
         .upstream = .{
-            .url = "https://github.com/fmtlib/fmt/archive/refs/tags/12.2.0.tar.gz",
-            .hash = "N-V-__8AADsyLwDSr147ZHInm1KZVBMWFbljHrDbGaYXAwe_",
+            .url = "https://github.com/fmtlib/fmt/archive/refs/tags/12.2.1.tar.gz",
+            .hash = "N-V-__8AADg4LwDjwO0zPMba-HW5dBh-VNhZHaIW2gU7EdWv",
         },
     },
     .paths = .{
