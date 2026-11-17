@@ -32,8 +32,56 @@
         '// renovate: datasource=(?<datasource>git-refs) depName=(?<depName>\\S+) packageName=(?<packageName>\\S+) currentValue=(?<currentValue>\\S+)\\s+\\.\\w+ = \\.\\{\\s+\\.url = "[^"]*?(?<currentDigest>[0-9a-f]{40})[^"]*"',
       ],
     },
+    {
+      customType: 'regex',
+      description: 'Zig version in build.zig.zon',
+      managerFilePatterns: [
+        '/(^|/)build\\.zig\\.zon$/',
+      ],
+      matchStrings: [
+        '\\.minimum_zig_version = "(?<currentValue>[^"]+)"',
+      ],
+      depNameTemplate: 'zig',
+      datasourceTemplate: 'forgejo-tags',
+      packageNameTemplate: 'ziglang/zig',
+      registryUrlTemplate: 'https://codeberg.org',
+    },
+    {
+      customType: 'regex',
+      description: 'mise conda backend in .tool-versions',
+      managerFilePatterns: [
+        '/(^|/)\\.tool-versions$/',
+      ],
+      matchStrings: [
+        '(?:^|\\n)conda:(?<depName>\\S+)\\s+(?<currentValue>\\S+)',
+      ],
+      datasourceTemplate: 'conda',
+      packageNameTemplate: 'conda-forge/{{depName}}',
+    },
   ],
   packageRules: [
+    {
+      description: 'Zig releases moved from GitHub to Codeberg',
+      matchManagers: [
+        'asdf',
+      ],
+      matchDepNames: [
+        'zig',
+      ],
+      overrideDatasource: 'forgejo-tags',
+      overridePackageName: 'ziglang/zig',
+      registryUrls: [
+        'https://codeberg.org',
+      ],
+    },
+    {
+      description: 'Tools pinned to major.minor float on patch releases',
+      matchFileNames: [
+        '.tool-versions',
+      ],
+      matchCurrentValue: '/^\\d+\\.\\d+$/',
+      extractVersion: '^v?(?<version>\\d+\\.\\d+)(\\.\\d+)?$',
+    },
     {
       description: 'Freedesktop marks pre-releases with patch numbers 90 and up',
       matchPackageNames: [

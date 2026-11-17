@@ -2,7 +2,7 @@
     .name = .udis86,
     .version = "0.0.0",
     .fingerprint = 0x4e23abbe9d01e4de,
-    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .minimum_zig_version = "0.17.1",
     .dependencies = .{
         // Hyprland's subprojects/udis86 fork; no release tags.
         // renovate: datasource=git-refs depName=udis86 packageName=https://github.com/canihavesomecoffee/udis86 currentValue=master

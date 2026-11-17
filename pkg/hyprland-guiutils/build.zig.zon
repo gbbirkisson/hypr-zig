@@ -2,7 +2,7 @@
     .name = .hyprland_guiutils,
     .version = "0.0.0",
     .fingerprint = 0xda0989b59c198942,
-    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .minimum_zig_version = "0.17.1",
     .dependencies = .{
         .build_util = .{ .path = "../build-util" },
         .hyprlang = .{ .path = "../hyprlang" },

@@ -3,4 +3,4 @@ conda:bison    3.8
 conda:libxml2  2.15.4
 conda:patch    2.8
 python         3.15
-zig            0.17.0
+zig            0.17.1

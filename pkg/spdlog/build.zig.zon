@@ -2,7 +2,7 @@
     .name = .spdlog,
     .version = "0.0.0",
     .fingerprint = 0x19cef805dd40f56,
-    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .minimum_zig_version = "0.17.1",
     .dependencies = .{
         .build_util = .{ .path = "../build-util" },
         .fmt = .{ .path = "../fmt" },

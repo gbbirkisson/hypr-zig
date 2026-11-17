@@ -2,7 +2,7 @@
     .name = .libxkbcommon,
     .version = "0.0.0",
     .fingerprint = 0x26fbca085e24bd87,
-    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .minimum_zig_version = "0.17.1",
     .dependencies = .{
         .build_util = .{ .path = "../build-util" },
         // renovate: datasource=github-tags depName=xkbcommon/libxkbcommon versioning=regex:^xkbcommon-(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)$

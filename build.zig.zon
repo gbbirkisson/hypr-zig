@@ -2,7 +2,7 @@
     .name = .hypr_zig,
     .version = "0.0.0",
     .fingerprint = 0x3a0d99966fc5effe, // Changing this has security and trust implications.
-    .minimum_zig_version = "0.17.0-dev.2228+955228b68",
+    .minimum_zig_version = "0.17.1",
     .dependencies = .{
         .batsignal = .{ .path = "pkg/batsignal" },
         .hypridle = .{ .path = "pkg/hypridle" },
