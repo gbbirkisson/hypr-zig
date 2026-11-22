@@ -7,7 +7,7 @@
         // renovate: datasource=github-releases depName=marzer/tomlplusplus
         .upstream = .{
             .url = "https://github.com/marzer/tomlplusplus/archive/refs/tags/v3.5.1.tar.gz",
-            .hash = "N-V-__8AADK0RQD1COdtDdmDmnolfWdg42Bp8usyxNExSWf6",
+            .hash = "N-V-__8AAAo-VACXuU_7ei7RTP7-BnPSd1rv3oPTHCK0boOh",
         },
     },
     .paths = .{
