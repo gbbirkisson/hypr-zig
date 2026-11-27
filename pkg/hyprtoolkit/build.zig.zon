@@ -16,8 +16,8 @@
         .wayland_protocols = .{ .path = "../wayland-protocols" },
         // renovate: datasource=github-tags depName=hyprwm/hyprtoolkit
         .upstream = .{
-            .url = "https://github.com/hyprwm/hyprtoolkit/archive/refs/tags/v0.6.0.tar.gz",
-            .hash = "N-V-__8AAHUyFADuGoy6NDyAwVB499laM6uW1oA3nOgzQP_5",
+            .url = "https://github.com/hyprwm/hyprtoolkit/archive/refs/tags/v0.7.0.tar.gz",
+            .hash = "N-V-__8AAMeLFACGWxfEInZlHzJ9elQyI8RGKP6h_3OBsImm",
         },
     },
     .paths = .{
