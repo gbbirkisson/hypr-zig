@@ -7,7 +7,7 @@
         .build_util = .{ .path = "../build-util" },
         // renovate: datasource=github-releases depName=Kistler-Group/sdbus-cpp
         .upstream = .{
-            .url = "https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v2.3.1.tar.gz",
+            .url = "https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v2.4.0.tar.gz",
             .hash = "N-V-__8AAIuQEgB8X6tNyzKcJmrg5abrzCyHlDjSbA-jn6c7",
         },
     },
