@@ -6,7 +6,7 @@
     .dependencies = .{
         // renovate: datasource=github-tags depName=HowardHinnant/date
         .upstream = .{
-            .url = "https://github.com/HowardHinnant/date/archive/refs/tags/v3.0.5.tar.gz",
+            .url = "https://github.com/HowardHinnant/date/archive/refs/tags/v3.0.6.tar.gz",
             .hash = "N-V-__8AAEKpHgDRQSpq7MdmGbWnoTfwivIkhXep1iw4gcK2",
         },
     },
